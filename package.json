@@ -1,0 +1,29 @@
+{
+  "name": "myrepo",
+  "version": "0.0.1",
+  "description": "road to power",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SH-dxj-SF/MyRepo.git"
+  },
+  "keywords": [
+    "JavaScript"
+  ],
+  "author": "dxj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SH-dxj-SF/MyRepo/issues"
+  },
+  "homepage": "https://github.com/SH-dxj-SF/MyRepo#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2"
+  }
+}
