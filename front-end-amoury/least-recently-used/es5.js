@@ -1,5 +1,9 @@
 // least recently used
 // 原型写法
+/**
+ * 最近最少使用缓存策略
+ * @param {Number} size 缓存数量
+ */
 function LRU(size) {
   this.cache = new Map();
   this.size = size;

@@ -1,7 +1,7 @@
 /**
  * 锯齿形（之字形）遍历，第一层从左到右，第二层从右到左，第三层从左到右...
  * @param {TreeNode} root
- * @returns {number[][]}二维数组
+ * @returns {number[][]} 二维数组
  */
 function zigzagTraversal(root) {
   if (!root) {

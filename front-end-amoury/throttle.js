@@ -1,9 +1,9 @@
 /**
  * 节流
- * @param {*Function} func // 需要执行的函数
- * @param {*Number} interval // 函数执行的间隔
- * @param {*Object} options // leading：开始立即执行一次，trailing：最后至少执行一次
- * @returns 节流处理后的函数
+ * @param {Function} func 需要执行的函数
+ * @param {Number} interval 函数执行的间隔
+ * @param {Object} options leading：开始立即执行一次，trailing：最后至少执行一次
+ * @returns {Function} 节流处理后的函数
  */
 function throttle(func, interval, options = { leading: true }) {
   let timer = null;

@@ -1,5 +1,9 @@
 // least recently used
 // class写法
+/**
+ * 最近最少使用缓存策略
+ * @class LRU
+ */
 class LRU {
   constructor(size) {
     this.cache = new Map();

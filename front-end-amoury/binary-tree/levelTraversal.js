@@ -1,7 +1,7 @@
 /**
  * 层级遍历，每一层依次访问
  * @param {TreeNode} root
- * @returns Array
+ * @returns {Number[]}
  */
 function levelTraversal(root) {
   if (!root) {

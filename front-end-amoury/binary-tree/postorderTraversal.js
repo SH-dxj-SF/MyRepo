@@ -1,7 +1,7 @@
 /**
  * 二叉树遍历，调整当前node二次入栈位置即可实现前中后序。
  * @param {TreeNode} root
- * @returns Array
+ * @returns {Number[]}
  */
 function postorderTraversal(root) {
   // 后续遍历
