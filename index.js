@@ -13,6 +13,7 @@ const {
   flatFakeI,
   flattenDeepR,
   flattenDeepI,
+  mapFake,
   // testArrForFlat,
 } = require('./front-end-amoury/array');
 
@@ -46,4 +47,5 @@ module.exports = {
   flatFakeI,
   flattenDeepR,
   flattenDeepI,
+  mapFake,
 };
