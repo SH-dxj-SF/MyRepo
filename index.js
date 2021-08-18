@@ -1,5 +1,6 @@
 const debounce = require('./front-end-amoury/debounce');
 const throttle = require('./front-end-amoury/throttle');
+const cloneDeep = require('./front-end-amoury/cloneDeep');
 const { LRU_ES5, LRU_ES6 } = require('./front-end-amoury/least-recently-used');
 const {
   postorderTraversal,
@@ -48,4 +49,6 @@ module.exports = {
   flattenDeepR,
   flattenDeepI,
   mapFake,
+  //
+  cloneDeep,
 };
