@@ -3,6 +3,9 @@
   "rules": {
     "func-names": "off",
     "space-before-function-paren": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off", // 禁止 ++ 操作符
+    "no-param-reassign": "warn", // 禁止给参数重新赋值
+    "no-extend-native": "warn", // 禁止扩展原生类型
+    "no-loop-func": "warn" // 禁止在循环语句中出现包含不安全引用的函数声明
   }
 }
