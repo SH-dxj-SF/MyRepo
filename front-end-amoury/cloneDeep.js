@@ -1,18 +1,18 @@
 const getAccurateType = require('./getAccurateType');
 
 function isObject(obj) {
-  // 判断是否为引用类型数据
   return obj !== null && typeof obj === 'object';
 }
 
 /**
- * 深拷贝
+ * 深拷贝（待完善）
  * @param {*} origin
  * @param {*} [cache=new Map()]
- * @returns
+ * @returns {*}
  */
 function cloneDeep(origin, cache = new Map()) {
   if (!isObject(origin)) {
+    // 此处包含了原始数据类型和function
     return origin;
   }
 
