@@ -138,31 +138,31 @@ console.log(x);
       console.log(this.c); // 30
       ```
 
-      - 函数上下文中的 this 值：
+    - 函数上下文中的 this 值：
 
-        在这类代码中 this 值第一个（并且可能是最重要的）特性，就是没有静态的绑定到函数。
+      在这类代码中 this 值第一个（并且可能是最重要的）特性，就是没有静态的绑定到函数。
 
-        上面我们提到过，this 值在进入上下文时才被确定。并且每一次使用函数时 this 值都可能不同。然而，在代码运行时 this 值是不可变的，即不可能为其分配一个新值，因为它不是变量。
+      上面我们提到过，this 值在进入上下文时才被确定。并且每一次使用函数时 this 值都可能不同。然而，在代码运行时 this 值是不可变的，即不可能为其分配一个新值，因为它不是变量。
 
-        ```js
-        var foo = {x: 10};
-        var bar = {
-          x: 20,
-          test: function() {
-            console.log(this === bar); // true
-            console.log(this.x); // 20
-            this = foo; // 错误，不可修改this
-            console.log(this.x); // 20 如果上一行不会报错的话: 应该是10
-          }
+      ```js
+      var foo = {x: 10};
+      var bar = {
+        x: 20,
+        test: function() {
+          console.log(this === bar); // true
+          console.log(this.x); // 20
+          this = foo; // 错误，不可修改this
+          console.log(this.x); // 20 如果上一行不会报错的话: 应该是10
         }
-        // 进入上下文时 this 值被确定为 bar
-        foo.test = bar.test;
-        bar.test(); // true 20 20
+      }
+      // 进入上下文时 this 值被确定为 bar
+      foo.test = bar.test;
+      bar.test(); // true 20 20
 
-        foo.test = bar.test;
-        // 然而这里 this 值指向了 foo，尽管我们调用同一个函数
-        foo.test(); // false 10 10
-        ```
+      foo.test = bar.test;
+      // 然而这里 this 值指向了 foo，尽管我们调用同一个函数
+      foo.test(); // false 10 10
+      ```
 
 那么究竟是什么影响了函数上下文中的 this？有以下几个因素：
 
