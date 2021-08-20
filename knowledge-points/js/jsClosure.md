@@ -37,28 +37,28 @@ console.log(add10(5)); // 15
 
 **实用的闭包：**
 
-1.
+1. 函数工厂
 
 ```js
 // js
-    function makeSizer(size) {
+  function makeSizer(size) {
     return function() {
-    document.body.style.fontSize = size + 'px';
+      document.body.style.fontSize = size + 'px';
     }
-    }
-    var size12 = makeSizer(12);
-    var size14 = makeSizer(14);
-    var size16 = makeSizer(16);
-    document.getElementById('size-12').onclick = size12;
-    document.getElementById('size-14').onclick = size14;
-    document.getElementById('size-16').onclick = size16;
-    // html
-    <a href='#' id={'size-12'}>12</a>
-    <a href='#' id={'size-14'}>14</a>
-    <a href='#' id={'size-16'}>16</a>
+  }
+  var size12 = makeSizer(12);
+  var size14 = makeSizer(14);
+  var size16 = makeSizer(16);
+  document.getElementById('size-12').onclick = size12;
+  document.getElementById('size-14').onclick = size14;
+  document.getElementById('size-16').onclick = size16;
+  // html
+  <a href='#' id={'size-12'}>12</a>
+  <a href='#' id={'size-14'}>14</a>
+  <a href='#' id={'size-16'}>16</a>
 ```
 
-2.闭包模拟似有方法
+2. 闭包模拟似有方法
 
 ```js
 var Counter = (function () {
@@ -117,7 +117,7 @@ console.log(counter2.value()); // 0
 
 **常见错误（es2015 即 es6 引入 let 关键字前）：**
 
-1.在循环中创建闭包：以下代码原意想给 arr 的每一个字函数在执行时返回循环时对应的下标，但运行时会发现 arr 中每一个函数执行返回的都是 10。这是由于 var 声明的 i 变量提升后具有函数作用域。每一次循环产生的闭包共享了同一个词法作用域。所以当它们被执行的时候 i 已经是 10 了；
+1. 在循环中创建闭包：以下代码原意想给 arr 的每一个字函数在执行时返回循环时对应的下标，但运行时会发现 arr 中每一个函数执行返回的都是 10。这是由于 var 声明的 i 变量提升后具有函数作用域。每一次循环产生的闭包共享了同一个词法作用域。所以当它们被执行的时候 i 已经是 10 了；
 
 ```js
 function closureTest() {
@@ -139,7 +139,7 @@ arr[9](); // 10
 
 **解决方法：**
 
-1.创建更多的闭包
+1. 创建更多的闭包
 
 ```js
 function makeImmediate(index) {
@@ -163,7 +163,7 @@ arr[5](); // 5
 arr[9](); // 9
 ```
 
-2.使用匿名闭包
+2. 使用匿名闭包
 
 ```js
 function closureTest() {
@@ -186,7 +186,7 @@ arr[5](); // 5
 arr[9](); // 9
 ```
 
-3.使用 let（es2015 引入）关键词，避免使用过多闭包
+3. 使用 let（es2015 引入）关键词，避免使用过多闭包
 
 ```js
 function closureTest() {
@@ -207,7 +207,7 @@ arr[5](); // 5
 arr[9](); // 9
 ```
 
-4.使用 forEach
+4. 使用 forEach
 
 ```js
 function closureTest() {
