@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": "latest"
   },
   "extends": "airbnb-base",
   "rules": {
@@ -11,6 +11,7 @@
     "no-extend-native": "warn", // 禁止扩展原生类型
     "no-loop-func": "warn", // 禁止在循环语句中出现包含不安全引用的函数声明
     "operator-linebreak": "off", // 强制操作符使用一致的换行符
-    "no-restricted-syntax": "warn"
+    "no-restricted-syntax": "warn", // 禁用特定的语法
+    "prefer-object-spread": "warn" // 优先使用对象扩展运算符
   }
 }
