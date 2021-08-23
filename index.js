@@ -1,13 +1,14 @@
-const debounce = require('./front-end-amoury/debounce');
-const throttle = require('./front-end-amoury/throttle');
-const cloneDeep = require('./front-end-amoury/cloneDeep');
-const { LRU_ES5, LRU_ES6 } = require('./front-end-amoury/least-recently-used');
+const debounce = require('./front-end-armoury/debounce');
+const throttle = require('./front-end-armoury/throttle');
+const cloneDeep = require('./front-end-armoury/cloneDeep');
+const eventEmitter = require('./front-end-armoury/eventEmitter');
+const { LRU_ES5, LRU_ES6 } = require('./front-end-armoury/least-recently-used');
 const {
   postorderTraversal,
   levelTraversal,
   zigzagTraversal,
   // testTree,
-} = require('./front-end-amoury/binary-tree');
+} = require('./front-end-armoury/binary-tree');
 const {
   find,
   flatFakeR,
@@ -16,7 +17,7 @@ const {
   flattenDeepI,
   mapFake,
   // testArrForFlat,
-} = require('./front-end-amoury/array');
+} = require('./front-end-armoury/array');
 
 // const lru = new LRU_ES5(3);
 // console.log(lru);
@@ -51,4 +52,5 @@ module.exports = {
   mapFake,
   //
   cloneDeep,
+  eventEmitter,
 };
