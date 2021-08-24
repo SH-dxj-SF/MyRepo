@@ -13,6 +13,8 @@
     "operator-linebreak": "off", // 强制操作符使用一致的换行符
     "no-restricted-syntax": "warn", // 禁用特定的语法
     "prefer-object-spread": "warn", // 优先使用对象扩展运算符
-    "prefer-destructuring": "off" // 有限使用结构赋值
+    "prefer-destructuring": "off", // 有限使用结构赋值
+    "arrow-body-style": "off", // 箭头函数体风格
+    "comma-dangle": "off" // 要求或禁止末尾逗号
   }
 }
