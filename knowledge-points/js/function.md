@@ -205,7 +205,7 @@ c) => 1;
 ```js
 let callback;
 callback = callback || function() {}; // ok
-callback = callback || () => {}; // Syntax Error: invalid arrow-function arguments
+callback = callback || () => {}; // Syntax Error: Malformed arrow function parameter list
 callback = callback || (() => {}); // ok
 ```
 
