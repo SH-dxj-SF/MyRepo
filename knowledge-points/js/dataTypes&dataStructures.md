@@ -12,11 +12,11 @@ JavaScript 中的类型集由原始值和对象组成。
 
 - 7 种原始数据（非**对象**也无**方法**的数据）类型（使用 typeof 运算符检查）：
 
-  1. undefined：typeof instance === ‘undefined’
+  1. Undefined：typeof instance === ‘undefined’
 
      一个没有被赋值的变量会有个默认值 undefined
 
-  2. null：typeof instance === ‘object’
+  2. Null：typeof instance === ‘object’
 
      Null 类型只有一个值 null
 
@@ -62,11 +62,11 @@ JavaScript 中的类型集由原始值和对象组成。
 
   数据属性是键值对，并且每个数据属性拥有以下特性：
 
-  ![data property](../../images/dataProperty.png)
+  ![data property](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/dataProperty.png)
 
   访问器属性具有一个或者两个访问器函数（get 和 set）来存取数值。并具有一下特性：
 
-  ![data property](../../images/accessorProperty.png)
+  ![data property](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/accessorProperty.png)
 
   注意 ⚠️：这些特性只有 JavaScript 引擎采用到，因此你不能直接访问它们。所以特性被放在了两队方括号中，而不是一对。
 
