@@ -21,7 +21,7 @@ function flattenDeepR() {
 
 /**
  * 深度提取（完全铺平）数组
- * 递归写法
+ * 迭代写法
  * @returns {array} // 提取后的数组
  */
 function flattenDeepI() {
