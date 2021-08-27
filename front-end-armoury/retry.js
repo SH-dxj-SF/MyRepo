@@ -37,7 +37,7 @@ function retryA(funcAsync, maxRetryCount = 3, retryInterval = 1000) {
 function retryP(funcAsync, maxRetryCount = 3, retryInterval = 1000) {
   const run = (max) => {
     return funcAsync().then(
-      (value) => Promise.resolve(value),
+      (value) => value,
       (reason) => {
         if (max) {
           return new Promise((resolve) => {
@@ -46,7 +46,7 @@ function retryP(funcAsync, maxRetryCount = 3, retryInterval = 1000) {
             }, retryInterval);
           });
         }
-        return Promise.reject(reason);
+        throw reason;
       }
     );
   };
@@ -57,8 +57,11 @@ function retryP(funcAsync, maxRetryCount = 3, retryInterval = 1000) {
 function testFunc() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // resolve(200);
-      reject(new Error('errrrrrrrrr'));
+      if (Math.random() > 0.9) {
+        resolve(200);
+      } else {
+        reject(new Error(404));
+      }
     }, 500);
   });
 }
