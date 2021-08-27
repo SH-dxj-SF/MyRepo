@@ -32,17 +32,19 @@ super.functionOnParent([arguments]);
 ```js
 class Rectangle {
   constructor(height, width) {
+    // 实例属性
     this.name = 'Rectangle';
     this.height = height;
     this.witdh = width;
   }
 
   say() {
+    // 原型方法
     console.log('Hi i am', this.name);
   }
 
   get area() {
-    return this.height \* this.witdh;
+    return this.height * this.witdh;
   }
 
   set area(value) {
