@@ -35,30 +35,6 @@ function setIimeoutFake(func, interval, ...args) {
   };
 }
 
-// 使用setTimeout实现
-function setIntervalByTimeout(func, interval, ...args) {
-  const timer = { id: undefined };
-  const loop = () => {
-    timer.id = setTimeout(() => {
-      func.apply(this, args);
-      loop();
-    }, interval);
-  };
-
-  const stop = () => {
-    clearTimeout(timer.id);
-    timer.id = undefined;
-  };
-
-  loop();
-
-  return {
-    timer,
-    stop,
-  };
-}
-
 module.exports = {
   setIimeoutFake,
-  setIntervalByTimeout,
 };
