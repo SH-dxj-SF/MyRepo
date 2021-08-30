@@ -26,7 +26,7 @@ JavaScript 中的类型集由原始值和对象组成。
 
   4. Number：typeof instance === ‘number’
 
-     根据 es 标准，js 只有一种数字类型：基于 IEEE754 标准的双精度 64 为二进制格式的值（-（2^53 - 1）到 2^53 - 1）一位符号位（63），11 位指数位（62…52），52 位小数位（51…0）。它并没有为整数给出一种特定的类型，除了能表示浮点数外，还有一些带符号的值：+Infinity、-Infinity、NaN（Not-a-Number）
+     根据 es 标准，js 只有一种数字类型：基于 IEEE754 标准的双精度 64 为二进制格式的值（-（2<sup>53</sup> - 1）到 2<sup>53</sup> - 1）一位符号位（63），11 位指数位（62…52），52 位小数位（51…0）。它并没有为整数给出一种特定的类型，除了能表示浮点数外，还有一些带符号的值：+Infinity、-Infinity、NaN（Not-a-Number）
 
   5. String：typeof instance === ‘string’
 

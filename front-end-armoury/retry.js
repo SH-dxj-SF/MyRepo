@@ -37,7 +37,7 @@ function retryA(funcAsync, maxRetryCount = 3, retryInterval = 1000) {
 function retryP(funcAsync, maxRetryCount = 3, retryInterval = 1000) {
   const run = (max) => {
     return funcAsync().then(
-      (value) => value,
+      (value) => Promise.resolve(value),
       (reason) => {
         if (max) {
           return new Promise((resolve) => {
