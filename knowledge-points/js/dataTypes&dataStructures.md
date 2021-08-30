@@ -37,24 +37,47 @@ JavaScript 中的类型集由原始值和对象组成。
      是 ECMAScript（es2015）第六版新定义的。符号类型是唯一且不可修改的。并且也可以用来作为 Object 的 key。
      使用场景：
 
-     a) 设置常量：symbol 唯一性
+     a) 设置常量
+
+     利用 symbol 的唯一性
 
      ```js
      const TYPE_IMAGE = Symbol();
      const TYPE_VEDIO = Symbol();
      ```
 
-     b) 模拟私有方法/属性：symbol 唯一性；Object.keys()以及 for in 循环不包含
-     c) 全局共享值：通过键获取 symbol：Symbol.for()；通过 symbol 获取其 symbol 全局注册表（不同的 window 中保持一致，比如嵌入了 iframe）中的和 symbol 对应的键：Symbol.keyFor()
+     b) 模拟私有方法/属性
 
-  7. BigInt：typeof instance === ‘bigint’
-     可以用任意精度表示整数，可以安全的存储和操作大整数，甚至可以超出数字的安全整数限制。BigInt 整数末尾加 n 或者调用构造函数来创建。
-     可以对 BigInt 使用像数字一样使用+、\*、-、\*\*、%运算符，但是不支持单目+运算。
-     除>>>（无符号右移）以外的位运算符
-     /运算向零取整。
-     BigInt 严格来说并不等于一个数字，但它是松散的。即 2n === 2 为 false 但是 2n == 2 为 true。
-     在将 BigInt 转换为 Boolean 时，它的行为类似于一个数字：if、||、&&、Boolean、！
-     不能与数字互换操作，否则抛出 TypeError
+     symbol 唯一性；Object.keys()以及 for in 循环不包含
+
+     ```js
+     let sym = Symbol();
+     let obj = {
+       name: 'obj',
+       age: 12,
+       [sym]: 'valueOfKeySym',
+     };
+
+     Object.keys(obj); // ['name', 'age']
+     ```
+
+     c) 全局共享值
+
+     - 通过键获取 symbol：Symbol.for()；
+     - 通过 symbol 获取其 symbol 全局注册表（不同的 window 中保持一致，比如嵌入了 iframe）中的和 symbol 对应的键：Symbol.keyFor()
+
+7. BigInt：typeof instance === ‘bigint’
+
+   可以用任意精度表示整数，可以安全的存储和操作大整数，甚至可以超出数字的安全整数限制。BigInt 整数末尾加 n 或者调用构造函数来创建。
+
+   可以对 BigInt 使用像数字一样使用+、\*、-、\*\*、%运算符，但是不支持单目+运算。
+
+   它还支持除 >>>（无符号右移）以外的位运算符、/ 运算向零取整（不会返回小数部分）
+
+   BigInt 严格来说并不等于一个数字，但它是松散的。即 2n === 2 为 false 但是 2n == 2 为 true。
+
+   在将 BigInt 转换为 Boolean 时，它的行为类似于一个数字：if、||、&&、Boolean、！
+   不能与数字互换操作，否则抛出 TypeError
 
 - Object：typeof instance === ‘object’。
 
