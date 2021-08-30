@@ -175,9 +175,9 @@ return;
 ```js
 // 使用一个完成状态的promise，then方法块将会被立即触发
 // 但是通过console.log打印出的信息，我们可以发现处理函数十倍异步执行的
-const resolvecProm = Promise.resolve(11);
+const resolvedProm = Promise.resolve(11);
 
-let thenProm = resolvecProm.then((value) => {
+let thenProm = resolvedProm.then((value) => {
   console.log('主栈结束后调用该方法，接受到的参数和返回值为：', value);
   return value;
 });
