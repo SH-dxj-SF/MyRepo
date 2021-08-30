@@ -14,7 +14,7 @@ Promise 对象用于表示一个异步操作的最终完成（或失败）及其
 
 并且因为 Promise.prototype.then 和 Promise.prototype.catch 方法返回的是 promise，所以它们可以被链式调用。
 
-![promiseChainCall](../../images/promiseChainCall.png)
+![promiseChainCall](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/promiseChainCall.png)
 
 <font color="#b6cbef">
 注意: 如果一个 promise 已经被兑现（fulfilled）或被拒绝（rejected），那么我们也可以说它处于已敲定（settled）状态。您还会听到一个经常跟 promise 一起使用的术语：已决议（resolved），它表示 promise 已经处于已敲定(settled)状态，或者为了匹配另一个 promise 的状态被"锁定"了。
