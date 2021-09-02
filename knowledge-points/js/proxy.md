@@ -66,6 +66,7 @@ const p = new Proxy(target, handler);
   - handler.ownKeys()：Object.getOwnPropertyNames()方法和 Object.getOwnPropertySymbols()方法的捕获器
 
   - handler.apply(target, thisArg, argumentsList)
+
     函数调用操作的捕获器，用于拦截函数的调用。
 
     this 绑定在 对象 handler 上。
@@ -116,11 +117,11 @@ const p = new Proxy(target, handler);
     - new proxy(...args)
     - Reflect.construct()
 
----
-
 关于 handler 中捕获器通用参数的解释：
 
 - target：目标对象（函数）
+
+---
 
 我们看个例子，熟悉下语法：
 
