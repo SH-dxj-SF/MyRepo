@@ -1,3 +1,9 @@
+/**
+ * 模拟Array.prototype.reduce
+ * @param {Function} callback
+ * @param {Array} args
+ * @returns {*}
+ */
 function reduceFake(callback, ...args) {
   if (this === null || typeof this === 'undefined') {
     throw new TypeError('Array.prototype.reduce called on null or undefined');
