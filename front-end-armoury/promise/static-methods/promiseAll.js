@@ -1,19 +1,22 @@
-const isIterable = require('../isIterable'); // 判断是否可迭代
-const getAccurateType = require('../getAccurateType'); // 返回准确类型
-
+const isIterable = require('../../isIterable'); // 判断是否可迭代
 /**
  * 模拟Promise.all
  * @param {Array<Promise>} promises
  * @returns {Promise}
  */
 function promiseAll(promises) {
-  return new Promise((resolve, reject) => {
-    if (!isIterable(promises)) {
-      reject(
-        new TypeError(`参数类型错误：${getAccurateType(promises)} 不是可迭代的`)
-      );
-    }
+  if (!isIterable(promises)) {
+    return Promise.reject(
+      new TypeError(`${typeof promises} ${promises} is not iterable`)
+    );
+  }
 
+  if (promises.length < 1) {
+    // 如果传入的参数是一个空的可迭代对象，则返回一个已完成（already resolved）状态的promise。
+    return Promise.resolve([]);
+  }
+
+  return new Promise((resolve, reject) => {
     const length = promises.length;
     const result = new Array(length);
     let count = 0;
