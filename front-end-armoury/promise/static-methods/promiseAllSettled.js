@@ -43,4 +43,4 @@ function promiseAllSettled(promises) {
   });
 }
 
-promiseAllSettled(1);
+module.exports = promiseAllSettled;
