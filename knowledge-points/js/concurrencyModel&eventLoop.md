@@ -166,13 +166,15 @@ JavaScript 的事件循环模型与许多其他语言不同的一个有趣的特
 5. I/O
 6. postMessage
 
+注意 ⚠️：在 node 中，setTimeout(callback, 0)方法回调和 setImmediate(callback)方法回调执行顺序是不确定的。
+
 一个**微任务**就是一个简短的函数，当创建该函数的函数执行之后，并且只有当 JavaScript 调用栈为空，而且控制权尚未返还给被**user agent**用来驱动脚本执行环境的事件循环之前，该微任务才会被执行。
 使用微任务队列的有：
 
-1. Promise
+1. promise.then
 2. process.nextTick（Node.js 环境）
 3. Object.observe
-4. MutationObserver
+4. MutationObserver（浏览器环境）
 
 现在 queueMicrotask()方法可以标准的管理使用微任务。
 
