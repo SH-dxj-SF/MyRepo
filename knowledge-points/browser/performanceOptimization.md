@@ -93,9 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
         window.removeEventListener('orientationChange', lazyLoad);
       }
     }, 100);
-    container.addEventListener('scroll', lazyLoad);
-    window.addEventListener('resize', lazyLoad);
-    window.addEventListener('orientationChange', lazyLoad);
   }
+
+  container.addEventListener('scroll', lazyLoad);
+  window.addEventListener('resize', lazyLoad);
+  window.addEventListener('orientationChange', lazyLoad);
 });
 ```
