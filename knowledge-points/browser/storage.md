@@ -28,7 +28,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/Document/cookie
 
 2. SessionStorage
 
-   和 localStorage 基本一致，差别在于 sessionStorage 在**会话期间（即只要浏览器处于打开状态，包括页面重新加载和恢复）**可用，会话结束时即清除数据。
+   和 localStorage 基本一致，差别在于 sessionStorage 在**会话期间（即只要浏览器处于打开状态，包括页面重新加载和恢复）** 可用，会话结束时即清除数据。
 
    在此补充一下 Storage 对象知识。
 
