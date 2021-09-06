@@ -10,9 +10,13 @@ function promiseResolve(value) {
 
   return new Promise((resolve, reject) => {
     if (value && value.then && typeof value.then === 'function') {
-      setTimeout(() => {
-        value.then(resolve, reject);
-      }, 0);
+      queueMicrotask(() => {
+        try {
+          value.then(resolve, reject);
+        } catch (e) {
+          reject(e);
+        }
+      });
     } else {
       resolve(value);
     }

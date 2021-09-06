@@ -63,7 +63,6 @@ class PromiseFake {
 
     const resolve = (value) => {
       // 使用箭头函数：保证this为声明时所在父作用域的this，也就是PromiseFake的实例
-
       if (this.status === STATUS_PENDING) {
         this.status = STATUS_FULFILLED;
         this.value = value;
