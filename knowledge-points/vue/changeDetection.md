@@ -60,7 +60,7 @@ Vue 新增了全局 API，Vue.set，Vue.delete 以弥补。
 
 重写操作数组的方法(src/core/observer/array.js)，数组操作不再是 Array 的原生方法，而是原生方法的扩展。
 
-![vueArrayMethodsExtension](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vueArrayMethodsExtension.png)
+![vueArrayMethodsExtension](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/arrayMethodsExtension.png)
 
 #### 使用拦截器：
 
