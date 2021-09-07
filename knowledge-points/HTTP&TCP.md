@@ -270,7 +270,7 @@ HTTP 1.1：
 
   HTML 表单是否支持：否
 
-POST、PUT、PATCH 的差异：
+## POST、PUT、PATCH 的差异：
 
 假设我们有一个 userInfo 信息，里边有 userID、userName 等十个字段
 
@@ -282,7 +282,7 @@ PUT 也是更新资源，但是应该提供完整的资源对象信息，理论�
 
 POST 可以是对已有资源的修改或者是资源新增（创建多条）。
 
-GET 和 POST 的异同：
+## GET 和 POST 的异同：
 
 本质上它们是 HTTP 的两种请求方法，HTTP 是基于 TCP/IP 的数据如何在万维网中传输的协议。所以 GET 和 POST 都是 TCP 连接。技术上它们无差别，可以做同样的事情。
 
