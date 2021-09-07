@@ -56,7 +56,7 @@ Vue 中的 DOM-Diff 过程就是 patch（词义为”补丁”）过程。核心
 
 createElm 方法（src/core/vdom/patch.js）首先判断是否为元素节点（VNode 是否有 tag 标签），如果不是在判断是否为注释节点（VNode 的 isComment 属性是否为真），如果以上两种都不是则当作文本节点创建。然后插入到 DOM 中。
 
-![flowChartCreateNode](../../images/vue/flowChartCreateNode.png)
+![flowChartCreateNode](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/flowChartCreateNode.png)
 
 ### 删除节点
 
@@ -86,7 +86,7 @@ createElm 方法（src/core/vdom/patch.js）首先判断是否为元素节点（
 
 流程图如下所示：
 
-![flowChartUpdateNode](../../images/vue/flowChartUpdateNode.png)
+![flowChartUpdateNode](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/flowChartUpdateNode.png)
 
 ## 更新子节点
 
@@ -116,7 +116,7 @@ createElm 方法（src/core/vdom/patch.js）首先判断是否为元素节点（
 
 我们会将处理过的子节点打上标记，新建的节点就**应该**放在未处理节点的前边**而不是**已处理节点的后边。因为如果将新建节点放在已处理过的节点后边，那么如果下一个节点也是新建节点，这个时候会插入到上一个新建节点的前边（这是不对的）。下图有助理解：
 
-![createSubNode](../../images/vue/createSubNode.png)
+![createSubNode](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/createSubNode.png)
 
 ### 删除子节点
 
@@ -130,7 +130,7 @@ createElm 方法（src/core/vdom/patch.js）首先判断是否为元素节点（
 
 同样，此时移动到什么位置是关键 **（结论：同创建子节点，合适位置为所有未处理节点之前）**
 
-![moveSubNode](../../images/vue/moveSubNode.png)
+![moveSubNode](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/moveSubNode.png)
 
 原因就是如果前边有新建子节点，那么放在已处理节点之后就是不合理的。
 
@@ -140,13 +140,13 @@ createElm 方法（src/core/vdom/patch.js）首先判断是否为元素节点（
 
 ### 优化策略介绍
 
-![schematicDiagram](../../images/vue/schematicDiagram.png)
+![schematicDiagram](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/schematicDiagram.png)
 
 极端情况：前三对新旧节点都没有差异，那么第四个新节点需要第 16 次检查的时候才发现第四个旧节点与其相同。当子节点数量比较大的时候，算法复杂度会尤其高。
 
 优化思路：未处理的节点列表先通过以下顺序（1，2，3，4）处理
 
-![optimizationIdeas](../../images/vue/optimizationIdeas.png)
+![optimizationIdeas](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas.png)
 
 新前：newChildren 里所有未处理的第一个子节点
 新后：newChildren 里所有未处理的最后一个子节点
@@ -156,32 +156,32 @@ createElm 方法（src/core/vdom/patch.js）首先判断是否为元素节点（
 1 新前和旧前:
 如果相同则更新节点，由于位置相同无需移动；如果不同尝试后三种情况。
 
-![optimizationIdeas1](../../images/vue/optimizationIdeas1.png)
+![optimizationIdeas1](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas1.png)
 
 2 新后和旧后:
 如果相同则更新节点，由于位置相同无需移动；如果不同尝试后两种情况。
 
-![optimizationIdeas2](../../images/vue/optimizationIdeas2.png)
+![optimizationIdeas2](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas2.png)
 
 3 新后和旧前:
 
 如果相同则更新节点，然后将旧前在 oldChildren 中的位置移动到新后在 newChildren 中相同位置；如果不同尝试后最后一种情况。
 
-![optimizationIdeas3](../../images/vue/optimizationIdeas3.png)
+![optimizationIdeas3](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas3.png)
 
 那么该如何移动呢？我们一直强调以新的 VNode 为基准，所以新后和旧前相同的情况我们就是移动旧前到 oldChildren 的最后位置（所有未处理节点之后）。如下图:
 
-![optimizationIdeas3-2](../../images/vue/optimizationIdeas3-2.png)
+![optimizationIdeas3-2](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas3-2.png)
 
 4 新前和旧后:
 
 如果相同则更新节点，然后将旧后在 oldChildren 中的位置移动到新前在 newChildren 中相同位置。
 
-![optimizationIdeas4](../../images/vue/optimizationIdeas4.png)
+![optimizationIdeas4](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas4.png)
 
 此时又该如何移动呢？类似第三种情况，以新 VNode 为基准，移动旧后到 oldChildren 中的第一个位置（所有未处理节点之前）。
 
-![optimizationIdeas4-2](../../images/vue/optimizationIdeas4-2.png)
+![optimizationIdeas4-2](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/vue/optimizationIdeas4-2.png)
 
 如果上述四种优化方法没有找到相同的节点，那么按照最初的循环方式查找。
 
