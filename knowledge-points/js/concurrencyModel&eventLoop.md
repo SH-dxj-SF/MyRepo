@@ -172,11 +172,9 @@ JavaScript 的事件循环模型与许多其他语言不同的一个有趣的特
 使用微任务队列的有：
 
 1. promise.then
-2. process.nextTick（Node.js 环境）
-3. Object.observe
-4. MutationObserver（浏览器环境）
-
-现在 queueMicrotask()方法可以标准的管理使用微任务。
+2. MutationObserver（浏览器环境）
+3. process.nextTick（Node.js 环境）
+4. queueMicrotask 方法可以标准的管理使用微任务。
 
 注意 ⚠️：在 node 中，queueMicrotask()方法的任务队列在 process.nextTick()方法的任务队列后执行。虽然都是微任务。
 
