@@ -507,18 +507,3 @@ TCP 拥塞控制默认认为网络丢包是网络拥塞造成的。所以一般 
 图示如下：
 
 ![fourWayHandShake](https://raw.githubusercontent.com/SH-dxj-SF/MyRepo/master/images/fourWayHandShake.png)
-
-## 浏览器输入一个 URL 按下回车后发生了什么？
-
-即发送一个 http 请求的过程
-
-1. 缓存解析域名（为拿到服务器 IP 地址）
-
-   优先级为：浏览器缓存-->系统缓存-->路由器缓存，如果缓存中查找无果则查找系统的 hosts 文件；
-
-2. DNS（Domain Name System）解析域名（为拿到服务器 IP 地址）
-3. 浏览器与与服务器建立 TCP 连接（三次握手，默认 80 端口）
-4. 浏览器发送 HTTP 请求（主要信息：请求方法、请求说明、请求附加的数据）。
-5. 服务器解析请求并做出响应，返回结果给浏览器。
-6. 浏览器拿到响应结果，处理相应逻辑。
-7. TCP 连接关闭（四次握手）
