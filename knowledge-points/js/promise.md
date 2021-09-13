@@ -133,7 +133,9 @@ return;
 
 4. Promise.race(iterable)
 
-   当 iterable 参数里的任意一个子 promise 成功或失败后，父 promise 立马也会用子 promise 的成功返回或者失败详情作为参数调用父 promise 绑定的响应具柄。并返回该 promise。
+   当 iterable 参数里的任意一个子 promise 成功或失败后，父 promise 立马也会用子 promise 的成功返回或者失败详情作为参数调用父 promise 绑定的相应句柄。并返回该 promise 对象。
+
+   如果传的迭代是空的，则返回的 promise 将永远等待。
 
 5. Promise.reject(reason)
 

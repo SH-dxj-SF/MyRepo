@@ -13,7 +13,7 @@ function promiseAny(promises) {
 
   if (promises.length < 1) {
     // 如果传入的是一个空的可迭代对象，返回一个已拒绝的promise
-    return Promise.reject(TypeError(Error('All promises were rejected')));
+    return Promise.reject(Error('All promises were rejected'));
   }
 
   return new Promise((resolve, reject) => {
