@@ -11,16 +11,6 @@ function concurrencyControl(asyncTasks, n) {
     const result = new Array(length).fill('placeholder');
     let count = 0;
 
-    const handler = (value, index, status) => {
-      result[index] = {
-        value,
-        status,
-      };
-      if (index < length) {
-        run();
-      }
-    };
-
     const run = () => {
       const index = count++;
 
@@ -33,14 +23,26 @@ function concurrencyControl(asyncTasks, n) {
 
       const curTask = asyncTasks[index];
 
-      Promise.resolve(curTask()).then(
-        (value) => {
-          handler(value, index, 'fulfilled');
-        },
-        (reason) => {
-          handler(reason, index, 'rejected');
-        }
-      );
+      Promise.resolve(curTask())
+        .then(
+          (value) => {
+            result[index] = {
+              value,
+              status: 'fulfilled',
+            };
+          },
+          (reason) => {
+            result[index] = {
+              reason,
+              status: 'rejected',
+            };
+          }
+        )
+        .finally(() => {
+          if (index < length) {
+            run();
+          }
+        });
     };
 
     // 并发数量控制
