@@ -48,16 +48,41 @@ add500(500); // 1400
 add(1)(2)(3)(4)…
 
 ```js
-// 利用了 toString 方法的特性
+// 利用了 valueOf 方法的特性
 function add(num) {
   let count = num;
-  let _add = function (n) {
+
+  function _add(n) {
     count += n;
     return _add;
-  };
-  _add.toString = function () {
+  }
+  _add.valueOf = function () {
     return count;
   };
+  return _add;
+}
+```
+
+add(1,2,3)(4)(5)(6,7)() => 28
+
+add(1)(2)(3)() => 6
+
+```js
+function add(...args) {
+  let nums = [...args];
+
+  function _add(...argsNext) {
+    if (argsNext.length === 0) {
+      // 不再有参数传入作为计算结果的信号
+      return nums.reduce((pre, cur) => {
+        return pre + cur;
+      }, 0);
+    } else {
+      nums.push(...argsNext);
+      return _add;
+    }
+  }
+
   return _add;
 }
 ```
