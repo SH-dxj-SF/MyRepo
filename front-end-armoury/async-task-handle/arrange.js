@@ -34,19 +34,12 @@ class Arrange {
   }
 
   waitFirst(second) {
-    this.tasks.unshift(() => {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          return resolve();
-        }, second * 1000);
-      });
-    });
-
-    return this;
+    return this.wait(second, { first: true });
   }
 
-  wait(second) {
-    this.tasks.push(() => {
+  wait(second, options = { first: false }) {
+    const method = options.first ? 'unshift' : 'push';
+    this.tasks[method](() => {
       return new Promise((resolve) => {
         setTimeout(() => {
           return resolve();
@@ -99,22 +92,5 @@ a.do('commit').wait(2).do('finish');
 a.execute();
 
 console.log('eeeeeeeee');
-
-// arrange('William').execute();
-// William is notified
-
-// arrange('William').do('commit').execute();
-// William is notified
-// Start to commit
-
-// arrange('William').wait(5).do('commit').execute();
-// William is notified
-// 等待 5 秒
-// Start to commit
-
-// arrange('William').waitFirst(5).do('push').execute();
-// 等待 5 秒
-// William is notified
-// Start to push
 
 module.exports = Arrange;
