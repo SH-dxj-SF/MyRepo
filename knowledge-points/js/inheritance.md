@@ -137,7 +137,7 @@ const john = new Programmer('john', 18);
 john.name; // john
 ```
 
-## 方式五：寄生组合式继承（最佳）💡💡💡
+## 方式五：ES6 类继承（最佳）💡💡💡
 
 优点：
 
