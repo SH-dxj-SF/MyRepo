@@ -24,7 +24,7 @@
 
   - Last-Modified/IF-Modified-Since：浏览器第一次请求某个资源时，服务器响应头信息里会加上 Last-Modified 信息（一个时间，标识该资源最后一次修改时间）。当浏览器再次请求该资源时，请求头会携带 IF- Modified-Since 字段（值为之前服务器返回的 Last-Modified 字段值）。服务器收到请求后，比对这两个字段值来确定是否命中。
 
-    **如果命中**：返回状态码 304（Not-Modified） 并且不会返回资源内容和 Last-Modified。
+    **如果命中**：返回状态码 304（Not-Modified） 并且不会返回资源内容和 Last-Modified。
 
     **如果未命中**：返回新的资源内容和新的 Last-Modified
 

@@ -101,7 +101,7 @@ CORS 需要浏览器和服务器同时支持，整个 CORS 通信都是浏览器
       - Accept-Language
       - Content-Language
       - Last-Event-ID
-      - Content-Type：仅限这三个值 application/x-wwwx-form-urlencoded、multipart/form-data、text/plain
+      - Content-Type：仅限这三个值 application/x-www-form-urlencoded、multipart/form-data、text/plain
 
 2. 非简单请求（not-so-simple request），不满足上图条件的为非简单请求
 
