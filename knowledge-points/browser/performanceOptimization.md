@@ -2,9 +2,58 @@
 
 ## 白屏时间
 
-浏览器响应用户输入的地址开始，到浏览器开始渲染内容的这段时间。通常认为文档\<head\>解析完成，或者\<body\>开始渲染是白屏结束的时间点。
+浏览器响应用户输入的地址开始，到浏览器开始渲染内容的这段时间。通常认为文档<head\>解析完成，或者<body>开始渲染是白屏结束的时间点。
 
 影响因素：网络、服务端性能、前端页面结构设计
+
+计算方式：
+
+- 使用 performance
+
+```html
+<html>
+  <head>
+    <title>白屏时间计算</title>
+    <link href="xxxxx" />
+    <!-- 以head解析结束为白屏结束时间点 -->
+    <script>
+      const blankTime = new Date() - performence.timing.navigationStart;
+    </script>
+  </head>
+  <body>
+    <!-- 以body开始渲染为白屏结束时间点 -->
+    <script>
+      const blankTime = new Date() - performence.timing.navigationStart;
+    </script>
+    <!-- ...其他内容 -->
+  </body>
+</html>
+```
+
+- 不支持 performance: head 中手动插入 script 记录开始时间
+
+```html
+<html>
+  <head>
+    <script>
+      var start = new Date();
+    </script>
+    <title>白屏时间计算</title>
+    <link href="xxxxx" />
+    <!-- 以head解析结束为白屏结束时间点 -->
+    <script>
+      const blankTime = new Date() - start;
+    </script>
+  </head>
+  <body>
+    <!-- 以body开始渲染为白屏结束时间点 -->
+    <script>
+      const blankTime = new Date() - start;
+    </script>
+    <!-- ...其他内容 -->
+  </body>
+</html>
+```
 
 ## 首屏时间
 
