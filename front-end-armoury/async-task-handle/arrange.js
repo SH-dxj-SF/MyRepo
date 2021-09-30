@@ -82,15 +82,82 @@ function arrange(name) {
   return new Arrange(name);
 }
 
-console.log('sssssssss');
+// console.log('sssssssss');
 
-const a = new Arrange('William');
-a.waitFirst(2).do('push');
-a.execute();
-a.wait(1);
-a.do('commit').wait(2).do('finish');
-a.execute();
+// const a = new Arrange('William');
+// a.waitFirst(2).do('push');
+// a.execute();
+// a.wait(1);
+// a.do('commit').wait(2).do('finish');
+// a.execute();
 
-console.log('eeeeeeeee');
+// console.log('eeeeeeeee');
 
 module.exports = Arrange;
+
+// 实现一个 EatMan，自执行，无需显示调用execute方法
+// 说明:实现一个 EatMan，EatMan 可以有以下一些行为
+// 示例:
+// 1.EatMan('Han') 输出
+// Hi This is Hank!
+// 2.EatMan('Hank').eat('dinner').eat('supper') 输出
+// Hi This is Hank!
+// Eat dinner~
+// Eat supper~
+// 3.EatMan('Hank').eat('dinner').eatFirst('lunch') 输出
+// Eat lunch
+// Hi This is Hank!
+// Eat supper~
+// 4.EatMan('Hank').eat('dinner').eatFirst('lunch').eatFirst('breakfast') 输出
+// Eat breakfast~
+// Eat lunch~
+// Hi This is Hank!
+// Eat supper~
+function EatMan(name) {
+  const obj = {
+    name,
+    funcs: [],
+  };
+
+  obj.funcs.push(() => {
+    console.log(`Hi this is ${obj.name}`);
+    obj.execute();
+  });
+
+  obj.eat = function (type) {
+    this.funcs.push(() => {
+      console.log(`Eat ${type}~`);
+      this.execute();
+    });
+    return this;
+  };
+
+  obj.eatFirst = function (type) {
+    this.funcs.unshift(() => {
+      console.log(`Eat ${type}~`);
+      this.execute();
+    });
+    return this;
+  };
+
+  obj.execute = function () {
+    if (this.funcs.length < 1) {
+      return;
+    }
+    const cur = this.funcs.shift();
+    cur();
+  };
+
+  setTimeout(() => {
+    obj.execute();
+  }, 0);
+
+  return obj;
+}
+
+// console.log('sssssssss');
+// EatMan('Han');
+// EatMan('Hank').eat('dinner').eat('supper');
+// EatMan('Hank').eat('dinner').eatFirst('lunch');
+// EatMan('Hank').eat('dinner').eatFirst('lunch').eatFirst('breakfast');
+// console.log('eeeeeeee');
