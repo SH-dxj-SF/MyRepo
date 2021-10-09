@@ -27,7 +27,7 @@ function combinationSum(candidates, target) {
 
     for (let i = 0; i < trace.length; ++i) {
       selected.push(trace[i]);
-      // 可以重复选择所以同时又因为是组合：trace.slice(i)。不能再使用之前的数字，但是可以使用自身
+      // 可以重复选择同时又因为是组合，所以：trace.slice(i)。不能再使用之前的数字，但是可以使用自身
       dfs(selected, trace.slice(i), sum + trace[i]);
       selected.pop(); // 回溯
     }

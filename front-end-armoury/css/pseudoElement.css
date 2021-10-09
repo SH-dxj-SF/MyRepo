@@ -1,0 +1,36 @@
+/* 正方形对角线 */
+.box::after {
+  position: absolute;
+  /* height作为线条宽度 */
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  /* 注意transform中先用translate配合top实现居中对齐，再scale伸长 */
+  transform: translateY(-50%) rotate(45deg) scale(1.414);
+  content: '';
+  background-color: red;
+}
+
+/* --------------------------分割线-------------------------- */
+
+/* 一个标签实现十字符号 */
+.box::before {
+  /* 竖线 */
+  position: absolute;
+  height: 100%;
+  width: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  content: '';
+  background-color: red;
+}
+.box::after {
+  /* 横线 */
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  top: 50%;
+  content: '';
+  transform: translateY(-50%);
+  background-color: red;
+}
