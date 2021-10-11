@@ -19,26 +19,28 @@ function promiseAllSettled(promises) {
     const result = [];
     let count = 0;
 
-    const handler = (value, index, status) => {
-      result[index] = {
-        value,
-        status,
-      };
-      count++;
-      if (count === length) {
-        resolve(result);
-      }
-    };
-
     for (let i = 0; i < length; ++i) {
-      Promise.resolve(promises[i]).then(
-        (value) => {
-          handler(value, i, 'fulfilled');
-        },
-        (reason) => {
-          handler(reason, i, 'rejected');
-        }
-      );
+      Promise.resolve(promises[i])
+        .then(
+          (value) => {
+            result[i] = {
+              status: 'fulfilled',
+              value,
+            };
+          },
+          (reason) => {
+            result[i] = {
+              status: 'rejected',
+              reason,
+            };
+          }
+        )
+        .finally(() => {
+          count++;
+          if (count === length) {
+            resolve(result);
+          }
+        });
     }
   });
 }
