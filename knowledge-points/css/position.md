@@ -18,7 +18,7 @@ position 属性用于指定一个元素在文档中的定位方式。left、righ
 
 - 如果 top 和 bottom 都被指定了（严格来说这里的指定值不为 auto），那么 top 优先
 
-- 如果制定了 left 和 right，当 direction 设置为 ltr 时（水平书写的中文，英文等），left 优先；当 direction 设置为 rtl（阿拉伯语、希伯来语、波斯语等由右往左书写）时，right 优先。
+- 如果指定了 left 和 right，当 direction 设置为 ltr 时（水平书写的中文，英文等），left 优先；当 direction 设置为 rtl（阿拉伯语、希伯来语、波斯语等由右往左书写）时，right 优先。
 
 ## position 取值
 
