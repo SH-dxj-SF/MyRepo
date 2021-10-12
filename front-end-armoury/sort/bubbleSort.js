@@ -1,3 +1,7 @@
+/**
+ * 冒泡排序，稳定，时间复杂度O(n^2)
+ * @param {Array} arr
+ */
 function bubbleSort(arr) {
   const length = arr.length;
   let flag = false;

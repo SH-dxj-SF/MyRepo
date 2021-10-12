@@ -1,3 +1,7 @@
+/**
+ * 插入排序，稳定，时间复杂度O(n^2)
+ * @param {*} arr
+ */
 function insertionSort(arr) {
   const length = arr.length;
 

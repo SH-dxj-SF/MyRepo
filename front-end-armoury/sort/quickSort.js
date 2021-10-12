@@ -1,3 +1,7 @@
+/**
+ * 快速排序，不稳定，平均时间复杂度O(n*log2n)
+ * @param {*} array
+ */
 function quickSort(array) {
   function sort(arr, left = 0, right = arr.length - 1) {
     if (left >= right) {

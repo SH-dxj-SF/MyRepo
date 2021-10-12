@@ -1,3 +1,7 @@
+/**
+ * 选择排序，不稳定，时间复杂度O(n^2)
+ * @param {*} arr
+ */
 function selectionSort(arr) {
   const length = arr.length;
 
