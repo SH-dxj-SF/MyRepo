@@ -36,9 +36,7 @@ function combinationSum2(candidates, target) {
       }
 
       selected.push(trace[i]);
-
       dfs(selected, trace.slice(i + 1), trace[i] + sum);
-
       selected.pop();
     }
   };
