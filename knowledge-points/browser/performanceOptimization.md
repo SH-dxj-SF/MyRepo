@@ -101,11 +101,20 @@
 
 1. 通过 clientHeight（可视窗口高度）、offsetTop（元素 border 顶部距离父元素 offsetParentborder 顶部距离）、scrollTop（可视窗口纵向滚动距离）计算：
 
-   img.offsetTop < viewWindow.scrollTop + viewWindow.clientHeight 成立的话说明在可视区域。
+   ```js
+   // 不在视窗下边，也不在视窗上边，那就是在视窗内
+   !(
+     img.offsetTop - viewWindow.scrollTop > viewWindow.clientHeight ||
+     img.offsetTop + img.offsetHeight < viewWindow.scrollTop
+   );
+   ```
 
 2. Element.getBoundingClientRect 方法返回元素的大小以及相对视口的位置。我们比较 img 元素的 top、bottom 和滚动容器元素的 top、bottom：
 
-   (img.top > container.top && img.top < container.bottom) || (img.bottom > container.top && img.bottom < container.bottom)
+   ```js
+   // 不在视窗下边，也不在视窗上边，那就是在视窗内
+   !(img.top > container.bottom || img.bottom < container.top);
+   ```
 
    注意 ⚠️：该方法性能不佳
 
@@ -131,7 +140,12 @@ document.addEventListener('DOMContentLoaded', function () {
     timer = setTimeout(() => {
       lazyLoadImgs.forEach((item) => {
         // 在可视区域内
-        if (item.offsetTop < container.clientHeight + container.scrollTop) {
+        if (
+          !(
+            item.offsetTop - container.scrollTop > container.clientHeight ||
+            item.offsetTop + item.offsetHeight < container.scrollTop
+          )
+        ) {
           item.src = item.dataset.src;
           item.classList.remove('img-lazy-load');
         }
