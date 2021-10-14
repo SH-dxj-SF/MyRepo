@@ -173,3 +173,60 @@ john instanceof Person; // true
 mike instanceof Programmer; // true
 mike instanceof Person; // true
 ```
+
+# 关于构造函数指向修复
+
+我们注意到在实现继承的时候会出现这样的代码
+
+```js
+Programmer.prototype = new Person();
+Programmer.prototype.constructor = Programmer; // 修复构造函数指向
+```
+
+或者这样
+
+```js
+const prototype = Object.create(parent.prototype);
+prototype.constructor = child; // 修复构造函数指向
+child.prototype = prototype;
+```
+
+其中将子构造函数原型设置为父构造函数原型的实例基本上没有什么疑惑，它们的作用都是为了继承到父类的属性。
+
+那么将子构造函数新的原型的 constructor 属性修改为子构造函数自身的目的又是什么呢？
+
+其实我们在 js 实现继承的过程中主要是修改和模拟原生原型链关系，因为原生的原型链它本身就是具有构造函数自身的 prototype 的 constructor 属性指向构造函数自身的特性。这么理解也是无可厚非的，那么我们反过来想，如果没有修改这个指向，会有什么影响吗？
+
+我们看一个简单的例子：
+
+```js
+function Parent() {
+  this.tagP = 'parent';
+}
+
+function Child() {
+  Parent.call(this);
+  this.tagC = 'child';
+}
+
+Child.prototype = Object.create(Parent.prototype); // 子构造函数prototype设置为父构造函数的实例
+// Child.prototype.constructor = Child; // 修复constructor指向
+
+const child1 = new Child();
+console.log(child1.tagC, child1.tagP); // 'child' 'parent'
+
+const child2 = new child1.constructor();
+console.log(child1.tagC, child1.tagP); // undefined 'parent'
+```
+
+这是我们看到有一些问题产生了，就是当我们确定某个实例对象的构造方法的时候，可能会使用这个实例的 constructor 属性去构造一个同类实例对象。也就是这一行:
+
+```js
+const child2 = new child1.constructor();
+```
+
+这个时候它没能正确的查找到构造函数 Child，而是使用了 Parent。
+
+原因就是，当我们将子构造函数的 prototype 设置为父构造函数的实例（也就是 Object.create(Parent.prototype 创建出来的这个对象)）以后，其实这个时候父类实例是没有 constructor 属性的。那么它就会沿着原型链往上查找，父类实例的隐式原型\_\_proto\_\_指向的是 Parent.ptototype，然后 Parent.prototype.constructor 指向了 Parent，所以就使用了构造函数 Parent 去生成新的 Child 实例。
+
+所以为了处理此类问题，我们需要修复子构造函数 prototype 的 constructor 属性为子类构造函数自身。
