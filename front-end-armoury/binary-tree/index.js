@@ -1,6 +1,7 @@
 const postorderTraversal = require('./postorderTraversal');
 const levelTraversal = require('./levelTraversal');
-const zigzagTraversal = require('./zigzagTraversal');
+const perLevelTraversal = require('./perLevelTraversal');
+const { zigzagTraversal, zigzagTraversalStrict } = require('./zigzagTraversal');
 
 const testTree = {
   value: 1,
@@ -28,5 +29,7 @@ module.exports = {
   testTree,
   postorderTraversal,
   levelTraversal,
+  perLevelTraversal,
   zigzagTraversal,
+  zigzagTraversalStrict,
 };
