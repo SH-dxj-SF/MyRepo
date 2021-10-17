@@ -33,11 +33,14 @@ function flatFakeR(depth = 1) {
 function flatFakeI(depth = 1) {
   const origin = this;
   let result = origin;
+  let again = true;
 
-  while (depth--) {
+  while (depth-- && again) {
     const temp = [];
+    again = false;
     result.forEach((item) => {
       if (Array.isArray(item)) {
+        again = true;
         item.forEach((itemInner) => {
           temp.push(itemInner);
         });
